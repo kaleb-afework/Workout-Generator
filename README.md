@@ -27,7 +27,7 @@ A web application to discover and build personalized workouts based on body type
 
 | Name | Role | Responsibilities |
 |------|------|------------------|
-| Dyson | Designer & Lead Developer | HTML structure, CSS styling, JavaScript integration, project architecture |
+| Kaleb | Designer & Lead Developer | HTML structure, CSS styling, JavaScript integration, project architecture |
 | Frazer | Researcher | API documentation, research, README updates, troubleshooting |
 | Aemod | QA/Tester | Testing, bug reports, responsive design verification, deployment |
 
