@@ -8,20 +8,13 @@ A web application to discover and build personalized workouts based on body type
 
 ## Features
 
-- 🏋️ Personalized workouts by body type
-- 🔍 Search and filter exercises by equipment and muscle group
-- 📱 Fully responsive design (mobile, tablet, desktop)
-- 💬 Contact form for user feedback
-- 📚 Team information and project documentation
-- 🚀 Live API integration with ExerciseDB
+-  Personalized workouts by body type
+-  Search and filter exercises by equipment and muscle group
+-  Fully responsive design (mobile, tablet, desktop)
+-  Contact form for user feedback
+-  Team information and project documentation
+-  Live API integration with ExerciseDB
 
-## Tech Stack
-
-- **Frontend:** HTML5, CSS3, Bootstrap 5
-- **JavaScript:** Vanilla JS (ES6+), Fetch API
-- **API:** ExerciseDB via RapidAPI
-- **Version Control:** Git & GitHub
-- **Deployment:** GitHub Pages
 
 ## Project Team
 
