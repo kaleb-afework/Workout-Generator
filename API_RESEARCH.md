@@ -3,7 +3,7 @@
 ## API Information
 - API Name: ExerciseDB
 - Provider: RapidAPI
-- Base URL: https://rapidapi.com/api/exercisedb
+- Base URL: [https://rapidapi.com/api/exercisedb](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/playground/apiendpoint_2f739260-a9b0-4893-b6f7-41a4b74a199c)
 - API Key Required: Yes
 
 ## Endpoints Tested
