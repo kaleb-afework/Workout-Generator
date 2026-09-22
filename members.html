@@ -27,38 +27,7 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-5">Meet the Team</h1>
-        
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Kaleb</h5>
-                        <p class="card-text text-primary fw-bold">Designer & Lead Developer</p>
-                        <p class="card-text">Responsible for HTML structure, CSS styling, JavaScript integration, and overall project architecture.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Frazer</h5>
-                        <p class="card-text text-primary fw-bold">Researcher</p>
-                        <p class="card-text">Handles API research, documentation, README updates, and troubleshooting API integration issues.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Aemod</h5>
-                        <p class="card-text text-primary fw-bold">QA/Tester</p>
-                        <p class="card-text">Tests all pages and features, reports bugs, verifies responsive design, and manages GitHub Pages deployment.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row" id="teamCards"></div>
 
         <div class="row mt-5">
             <div class="col-md-8 offset-md-2">
@@ -75,5 +44,55 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Team member data as objects
+        let teamMembers = [
+            {
+                name: "Kaleb",
+                role: "Designer & Lead Developer",
+                description: "Responsible for HTML structure, CSS styling, JavaScript integration, and overall project architecture."
+            },
+            {
+                name: "Frazer",
+                role: "Researcher",
+                description: "Handles API research, documentation, README updates, and troubleshooting API integration issues."
+            },
+            {
+                name: "Aemod",
+                role: "QA/Tester",
+                description: "Tests all pages and features, reports bugs, verifies responsive design, and manages GitHub Pages deployment."
+            }
+        ];
+
+        // Log team data to console
+        console.log("Team Members:", teamMembers);
+
+        // Get the container where cards will go
+        let container = document.getElementById("teamCards");
+
+        // Loop through each team member
+        teamMembers.forEach(function(member) {
+            // Create HTML string for each card
+            let cardHTML = `
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>${member.name}</h5>
+                            <p class="text-primary fw-bold">${member.role}</p>
+                            <p>${member.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add the card to the container
+            container.innerHTML += cardHTML;
+            
+            // Log each member
+            console.log("Added: " + member.name);
+        });
+
+        console.log("Total team members:", teamMembers.length);
+    </script>
 </body>
 </html>
