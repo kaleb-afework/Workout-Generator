@@ -32,42 +32,7 @@
             <div class="col-md-4">
                 <div class="card p-4">
                     <h5 class="mb-3">Search Filters</h5>
-                    
-                    <div class="mb-3">
-                        <label for="bodyType" class="form-label">Body Type</label>
-                        <select class="form-select" id="bodyType">
-                            <option value="">-- Select Body Type --</option>
-                            <option value="ectomorph">Ectomorph (Lean)</option>
-                            <option value="mesomorph">Mesomorph (Athletic)</option>
-                            <option value="endomorph">Endomorph (Curvy)</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="equipment" class="form-label">Equipment</label>
-                        <select class="form-select" id="equipment">
-                            <option value="">-- Select Equipment --</option>
-                            <option value="barbell">Barbell</option>
-                            <option value="dumbbell">Dumbbell</option>
-                            <option value="machine">Machine</option>
-                            <option value="cable">Cable</option>
-                            <option value="bodyweight">Bodyweight</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="muscleGroup" class="form-label">Target Muscle</label>
-                        <select class="form-select" id="muscleGroup">
-                            <option value="">-- Select Muscle --</option>
-                            <option value="chest">Chest</option>
-                            <option value="back">Back</option>
-                            <option value="shoulders">Shoulders</option>
-                            <option value="legs">Legs</option>
-                            <option value="arms">Arms</option>
-                            <option value="core">Core</option>
-                        </select>
-                    </div>
-
+                    <div id="filterContainer"></div>
                     <button class="btn btn-primary w-100" id="searchBtn">Search Exercises</button>
                 </div>
             </div>
@@ -86,8 +51,102 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/app.js"></script>
+    <script>
+        // Filter data as objects
+        let filters = [
+            {
+                id: "bodyType",
+                label: "Body Type",
+                options: [
+                    { value: "ectomorph", text: "Ectomorph (Lean)" },
+                    { value: "mesomorph", text: "Mesomorph (Athletic)" },
+                    { value: "endomorph", text: "Endomorph (Curvy)" }
+                ]
+            },
+            {
+                id: "equipment",
+                label: "Equipment",
+                options: [
+                    { value: "barbell", text: "Barbell" },
+                    { value: "dumbbell", text: "Dumbbell" },
+                    { value: "machine", text: "Machine" },
+                    { value: "cable", text: "Cable" },
+                    { value: "bodyweight", text: "Bodyweight" }
+                ]
+            },
+            {
+                id: "muscleGroup",
+                label: "Target Muscle",
+                options: [
+                    { value: "chest", text: "Chest" },
+                    { value: "back", text: "Back" },
+                    { value: "shoulders", text: "Shoulders" },
+                    { value: "legs", text: "Legs" },
+                    { value: "arms", text: "Arms" },
+                    { value: "core", text: "Core" }
+                ]
+            }
+        ];
+
+        console.log("Filters loaded:", filters);
+
+        // Get the filter container
+        let filterContainer = document.getElementById("filterContainer");
+
+        // Loop through each filter
+        filters.forEach(function(filter) {
+            // Create label
+            let labelHTML = `<label for="${filter.id}" class="form-label">${filter.label}</label>`;
+            
+            // Create select with default option
+            let selectHTML = `<select class="form-select" id="${filter.id}">
+                <option value="">-- Select ${filter.label} --</option>`;
+            
+            // Loop through options and add them
+            filter.options.forEach(function(option) {
+                selectHTML += `<option value="${option.value}">${option.text}</option>`;
+            });
+            
+            selectHTML += `</select>`;
+            
+            // Create complete div with label and select
+            let filterHTML = `<div class="mb-3">${labelHTML}${selectHTML}</div>`;
+            
+            // Add to page
+            filterContainer.innerHTML += filterHTML;
+            
+            console.log("Added filter:", filter.label);
+        });
+
+        // Get the search button
+        let searchBtn = document.getElementById("searchBtn");
+        let resultsDiv = document.getElementById("results");
+
+        // Add click event to search button
+        searchBtn.addEventListener("click", function() {
+            // Get values from dropdowns
+            let bodyTypeValue = document.getElementById("bodyType").value;
+            let equipmentValue = document.getElementById("equipment").value;
+            let muscleValue = document.getElementById("muscleGroup").value;
+
+            // Log the selected values
+            console.log("Search filters:", {
+                bodyType: bodyTypeValue,
+                equipment: equipmentValue,
+                muscle: muscleValue
+            });
+
+            // Show selected values
+            let resultHTML = `<h5>Your Search:</h5>
+                <p><strong>Body Type:</strong> ${bodyTypeValue || "Not selected"}</p>
+                <p><strong>Equipment:</strong> ${equipmentValue || "Not selected"}</p>
+                <p><strong>Muscle:</strong> ${muscleValue || "Not selected"}</p>
+                <p class="text-muted mt-3">Exercises will load here when API is connected.</p>`;
+            
+            resultsDiv.innerHTML = resultHTML;
+        });
+
+        console.log("Page loaded - ready to search!");
+    </script>
 </body>
 </html>
