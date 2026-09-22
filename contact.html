@@ -44,4 +44,89 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Message</label>
-                        <textarea class="form-control"
+                        <textarea class="form-control" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+                <div id="successMessage" class="alert alert-success mt-3" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2026 Workout Generator. Built for VCU INFO 202.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form fields data as objects
+        let formFields = [
+            {
+                name: "name",
+                label: "Full Name",
+                required: true
+            },
+            {
+                name: "email",
+                label: "Email",
+                required: true
+            },
+            {
+                name: "subject",
+                label: "Subject",
+                required: false
+            },
+            {
+                name: "message",
+                label: "Message",
+                required: true
+            }
+        ];
+
+        console.log("Form fields:", formFields);
+
+        // Get the form and success message
+        let contactForm = document.getElementById("contactForm");
+        let successMessage = document.getElementById("successMessage");
+
+        // Handle form submission
+        contactForm.addEventListener("submit", function(event) {
+            // Stop default form submission
+            event.preventDefault();
+
+            // Create object with form data
+            let formData = {
+                name: contactForm.name.value,
+                email: contactForm.email.value,
+                subject: contactForm.subject.value,
+                message: contactForm.message.value,
+                timestamp: new Date()
+            };
+
+            // Log the form data
+            console.log("Form submitted:", formData);
+
+            // Show success message
+            let message = `Thank you, ${formData.name}! We received your message and will get back to you soon.`;
+            successMessage.innerHTML = message;
+            successMessage.style.display = "block";
+
+            console.log("Email:", formData.email);
+            console.log("Subject:", formData.subject);
+            console.log("Message length:", formData.message.length);
+
+            // Clear the form
+            contactForm.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                successMessage.style.display = "none";
+            }, 5000);
+
+            console.log("Form cleared and ready for new submission");
+        });
+
+        console.log("Contact form ready!");
+    </script>
+</body>
+</html>
